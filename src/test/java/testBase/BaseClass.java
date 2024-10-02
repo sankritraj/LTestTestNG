@@ -1,5 +1,6 @@
 package testBase;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -25,7 +26,7 @@ import org.testng.annotations.Parameters;
 
 public class BaseClass {
 	public BaseClass() {
-		PropertyConfigurator.configure(System.getProperty("user.dir") + "\\log4j.properties");
+		PropertyConfigurator.configure(System.getProperty("user.dir") + File.separator+"log4j.properties");
 	}
 
 	public Logger LOGGER = Logger.getLogger(BaseClass.class);
@@ -107,7 +108,6 @@ public class BaseClass {
 			switch (browser.toLowerCase()) {
 			case "chrome": {
 				desiredCapabilities.setBrowserName("chrome");
-				LOGGER.info("The thread ID for Chrome is " + Thread.currentThread().threadId());
 				System.out.print("Chrome is set");
 				break;
 			}
@@ -172,9 +172,8 @@ public class BaseClass {
 	public Properties properties() {
 		try {
 			FileReader fileReader = new FileReader(
-					System.getProperty("user.dir") + "\\src\\test\\resources\\config.properties");
-			LOGGER.info("Properties file for config is picked from " + System.getProperty("user.dir")
-					+ "\\src\\test\\resources\\config.properties");
+					System.getProperty("user.dir") + File.separator+"src"+File.separator+"test"+File.separator+"resources"+File.separator+"config.properties");
+			LOGGER.info("Properties file for config is picked from " + System.getProperty("user.dir") + File.separator+"src"+File.separator+"test"+File.separator+"resources"+File.separator+"config.properties");
 			prop = new Properties();
 			prop.load(fileReader);
 		} catch (IOException e) {
