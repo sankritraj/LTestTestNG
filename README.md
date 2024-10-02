@@ -34,3 +34,7 @@ browsers and platforms (using Selenium 4 Grid and Selenium 4 Java):
 2. MicrosoftEdge + 87.0 + macOS Sierra
 3. Firefox + 82.0 + Windows 7
 4. Internet Explorer + 11.0 + Windows 10
+
+ ***to execute on gitpod use below file***
+ tasks:
+  - init: mvn install -DskipTests=false
