@@ -18,7 +18,7 @@
 				<version>2.22.0</version>
 				<configuration>
 				   <suiteXmlFiles>
-                            <suiteXmlFile>TestNG.xml</suiteXmlFile>
+                            <suiteXmlFile>SeleniumAdvancedTestNG.xml</suiteXmlFile>
                     </suiteXmlFiles>
 				</configuration>
 			</plugin>

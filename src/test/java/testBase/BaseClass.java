@@ -26,7 +26,7 @@ import org.testng.annotations.Parameters;
 
 public class BaseClass {
 	public BaseClass() {
-		PropertyConfigurator.configure(System.getProperty("user.dir") + File.separator+"log4j.properties");
+		PropertyConfigurator.configure(System.getProperty("user.dir") + File.separator + "log4j.properties");
 	}
 
 	public Logger LOGGER = Logger.getLogger(BaseClass.class);
@@ -51,7 +51,7 @@ public class BaseClass {
 			case "WINDOWS": {
 				desiredCapabilities.setPlatform(platform);
 				desiredCapabilities.setVersion(version);
-				// desiredCapabilities.setCapability(Platform.WIN10);
+				//desiredCapabilities.setCapability(Platform.VENTURA);
 				ltOptions = new HashMap<String, Object>();
 				ltOptions.put("username", username);
 				ltOptions.put("accessKey", accesskey);
@@ -85,7 +85,8 @@ public class BaseClass {
 
 			case "LINUX": {
 				desiredCapabilities.setPlatform(platform);
-				desiredCapabilities.setVersion(version);;
+				desiredCapabilities.setVersion(version);
+				;
 				ltOptions = new HashMap<String, Object>();
 				ltOptions.put("username", username);
 				ltOptions.put("accessKey", accesskey);
@@ -166,14 +167,24 @@ public class BaseClass {
 
 	@AfterMethod
 	public void closeCurrentBrowser() {
-		driver.quit();;
+		
+		try {
+		if (driver != null) {
+			driver.quit();
+		}}catch(Exception e)
+		{
+			LOGGER.error("Exception "+e.getMessage()+" occured");
+		}
+
 	}
 
 	public Properties properties() {
 		try {
-			FileReader fileReader = new FileReader(
-					System.getProperty("user.dir") + File.separator+"src"+File.separator+"test"+File.separator+"resources"+File.separator+"config.properties");
-			LOGGER.info("Properties file for config is picked from " + System.getProperty("user.dir") + File.separator+"src"+File.separator+"test"+File.separator+"resources"+File.separator+"config.properties");
+			FileReader fileReader = new FileReader(System.getProperty("user.dir") + File.separator + "src"
+					+ File.separator + "test" + File.separator + "resources" + File.separator + "config.properties");
+			LOGGER.info("Properties file for config is picked from " + System.getProperty("user.dir") + File.separator
+					+ "src" + File.separator + "test" + File.separator + "resources" + File.separator
+					+ "config.properties");
 			prop = new Properties();
 			prop.load(fileReader);
 		} catch (IOException e) {
