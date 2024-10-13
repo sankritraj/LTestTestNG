@@ -27,6 +27,8 @@ public class LambdaTestPage {
 			@FindBy(xpath = "//*[@class='footer-menu']/li"),
 			@FindBy(xpath = "//*[@class='header__menu px-2 desktop:w-full']//div/a[contains(@class,'desktop:block')]"),
 			@FindBy(xpath = "//*[@class='header__menu px-2 desktop:w-full']//div/button[contains(@class,'desktop:block')]")
+	
+
 
 	})
 
